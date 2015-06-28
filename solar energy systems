@@ -4,8 +4,21 @@ library(rvest)
 ## the ".title a" nodes was found by using selector gadget
 ## how can i get the name of all products in those 270 pages?
 
+## Products 
 aliurl<-"http://www.alibaba.com/products/F0/solar/CID100705.html"
 products<-aliurl %>%
   html() %>%
   html_nodes(".title a")%>%
+  html_text()
+### checking Price
+aliurl<-"http://www.alibaba.com/products/F0/solar/CID100705.html"
+price<-aliurl %>%
+  html() %>%
+  html_nodes(".title+ .attr")%>%
+  html_text()
+## company producer
+aliurl<-"http://www.alibaba.com/products/F0/solar/CID100705.html"
+supplier<-aliurl %>%
+  html() %>%
+  html_nodes(".ctitle")%>%
   html_text()
