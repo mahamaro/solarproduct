@@ -1,0 +1,11 @@
+library(rvest)
+## My idea is to collect all solar product on sale on alibaba, for that i use the code bellow
+## how ever the code only read the first page, or there is 270 pages
+## the ".title a" nodes was found by using selector gadget
+## how can i get the name of all products in those 270 pages?
+
+aliurl<-"http://www.alibaba.com/products/F0/solar/CID100705.html"
+products<-aliurl %>%
+  html() %>%
+  html_nodes(".title a")%>%
+  html_text()
